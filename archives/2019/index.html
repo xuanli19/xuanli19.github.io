@@ -40,7 +40,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/archives/2019/">
 
 
 
@@ -88,7 +88,11 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> LiXuan's blog </title>
+    <title>
+  
+    Archives - LiXuan's blog
+  
+</title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -218,119 +222,56 @@
           <div id="content" class="content">
             
   
-  <section id="posts" class="posts">
+  
+  
+
+  <section id="archive" class="archive">
+    
+      
+        <div class="archive-title">
+          <span class="archive-post-counter">
+            2 Posts In Total
+          </span>
+        </div>
+      
+    
+
     
       
         
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
         
-          <a class="post-link" href="/2019/07/16/ML_1/">post</a>
-        
-      </h1>
 
-      <div class="post-meta">
-        <span class="post-time">
-          2019-07-16
+        
+          
+          <div class="collection-title">
+            <h2 class="archive-year">2019</h2>
+          </div>
+        
+      
+
+      <div class="archive-post">
+        <span class="archive-post-time">
+          
+            07-16
+          
         </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <h2 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h2><ul>
-<li>归纳偏好 （挑选假设函数的基准）<ul>
-<li>一般根据“奥卡姆剃刀”原则，也就是选择最简单的假设函数。 如无必要，勿增实体。</li>
-<li>比如说给定有限训练集，有很多假设都能使得结果与有限训练集标签相似，这时候需要一个准则来在这个庞大的假设空间中选择假设进行启发，就是奥卡姆剃刀准则。<br>&lt; !–more–&gt;<br>没有归纳偏执或者归纳偏执太宽泛会导致 Overfitting，限制过大的归纳偏执也是有问题的，如果数据本身并不是线性的，强行用线性函数去做回归通常并不能得到好结果。 </li>
-</ul>
-</li>
-</ul>
-<p>“”没有免费的午餐“ No Free Lunch Theorem定理:　总误差与学习算法无关，它们的期望性能相同。（NFL前提：所有“问题”出现的机会相同，或所有问题同等重要，但实际情形并不是这样）</p>
-<p>NFL定理最重要的寓意：脱离具体问题，空泛的谈论“什么学习算法更好”毫无意义。因为若考虑所有潜在的问题，则所有学习算法都一样好，要谈论算法的相对优劣，必须要针对具体的学习问题，在某些问题上表现好的学习算法，在另一些问题上却可能不尽如人意。学习算法自身的归纳偏好与问题是否相配，往往会起到决定性的作用。</p>
-<blockquote>
-<p>参考: <a href="https://www.jianshu.com/p/b26b85fac9ad" target="_blank" rel="noopener">https://www.jianshu.com/p/b26b85fac9ad</a></p>
-</blockquote>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/10/24/hello-world/">Hello World</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-10-24
+        <span class="archive-post-title">
+          <a href="/2019/07/16/ML_1/" class="archive-post-link">
+            post
+          </a>
         </span>
-        
-        
       </div>
-    </header>
-
     
-    
+  </section>
 
-
-    <div class="post-content">
-      
-        
-        
-
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-      
-      
+  
   <nav class="pagination">
     
     
   </nav>
 
 
-    
-  </section>
+
 
           </div>
           
