@@ -253,7 +253,7 @@
         <h1 id="YOLO-v1"><a href="#YOLO-v1" class="headerlink" title="YOLO v1"></a>YOLO v1</h1><p>论文:《You Only Look Once: Uniﬁed, Real-Time Object Detection》<br>地址：<a href="http://www.arxiv.org/pdf/1506.02640.pdf" target="_blank" rel="noopener">http://www.arxiv.org/pdf/1506.02640.pdf</a></p>
 <a id="more"></a>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>作者提出把目标检测任务当做回归任务来做，用一个神经网络来完成bbox(bounding box)以及class probabilities(类别概率)的回归，因为网络是单个完整的，不同于Faster R-CNN是分为RPN(Region Proposal Network,区域建议网络，用来生成一些proposal，输给后续的回归网络)和回归网络。所以YOLO网络是可以端到端的训练。</p>
-<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p><img src="/_posts/media/15646480134852.jpg" alt="-w493"></p>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p><img src="/images/15646498692254.jpg" alt="-w505"></p>
 <ol>
 <li>输入图片img</li>
 <li>resize到指定尺寸</li>
