@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="《You Only Look Once》论文笔记">
+  <meta name="description" content="《You Only Look Once》YOLOv1论文笔记">
 
 
 
@@ -90,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> 《You Only Look Once》论文笔记 - LiXuan's blog </title>
+    <title> 《You Only Look Once》YOLOv1论文笔记 - LiXuan's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -224,7 +224,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          《You Only Look Once》论文笔记
+          《You Only Look Once》YOLOv1论文笔记
         
       </h1>
 
@@ -242,7 +242,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#YOLO-v1"><span class="toc-text">YOLO v1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络结构"><span class="toc-text">网络结构</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#YOLO-v1"><span class="toc-text">YOLO v1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络结构"><span class="toc-text">网络结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#YOLO系统流程"><span class="toc-text">YOLO系统流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要的网络结构如图"><span class="toc-text">主要的网络结构如图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loss-Function"><span class="toc-text">Loss Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem"><span class="toc-text">Problem</span></a></li></ol></li></ol></li></ol>
     </div>
   </div>
 
@@ -250,16 +250,22 @@
 
     <div class="post-content">
       
-        <h1 id="YOLO-v1"><a href="#YOLO-v1" class="headerlink" title="YOLO v1"></a>YOLO v1</h1><p>论文:《You Only Look Once: Uniﬁed, Real-Time Object Detection》<br>地址：<a href="http://www.arxiv.org/pdf/1506.02640.pdf" target="_blank" rel="noopener">http://www.arxiv.org/pdf/1506.02640.pdf</a></p>
+        <h1 id="YOLO-v1"><a href="#YOLO-v1" class="headerlink" title="YOLO v1"></a>YOLO v1</h1><p>论文:《You Only Look Once: Uniﬁed, Real-Time Object Detection》<br>论文地址：<a href="http://www.arxiv.org/pdf/1506.02640.pdf" target="_blank" rel="noopener">http://www.arxiv.org/pdf/1506.02640.pdf</a></p>
 <a id="more"></a>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>作者提出把目标检测任务当做回归任务来做，用一个神经网络来完成bbox(bounding box)以及class probabilities(类别概率)的回归，因为网络是单个完整的，不同于Faster R-CNN是分为RPN(Region Proposal Network,区域建议网络，用来生成一些proposal，输给后续的回归网络)和回归网络。所以YOLO网络是可以端到端的训练。</p>
 <h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p><img src="/images/15646498692254.jpg" alt="-w505"></p>
-<ol>
+<h3 id="YOLO系统流程"><a href="#YOLO系统流程" class="headerlink" title="YOLO系统流程"></a>YOLO系统流程</h3><ol>
 <li>输入图片img</li>
 <li>resize到指定尺寸</li>
 <li>通过预先设计好的多层CNN(一般包括特征抽取的VGG，以及回归层等)</li>
 <li>根据回归层输出的坐标和置信度confidence来对proposal进行筛选</li>
 </ol>
+<h3 id="主要的网络结构如图"><a href="#主要的网络结构如图" class="headerlink" title="主要的网络结构如图"></a>主要的网络结构如图</h3><p><img src="/images/15646501825586.jpg" alt="-w830"><br>如上图所示，输入一个图片，resize到<code>448*448</code>的，经过N多卷积网络层得到<code>7*7*30</code>的feature map<br><img src="/images/15646584712438.jpg" alt="-w719"><br>  图片源于<a href="https://www.zhihu.com/people/aibeing" target="_blank" rel="noopener">知乎用户</a>这个维度30的意义如下图所示，包括<code>confidence*2</code>,<code>(x1,y1)(x2,y2)四个坐标*2</code>,<code>20个类别概率(哪个概率大就是哪一类，用softmax实现)</code>，每一个30维的vector代表一个7*7的feature map 的每一个cell里面的信息。</p>
+<p><img src="/images/15647078987187.jpg" alt="-w326"><br>  置信度在训练时计算如上图所示，Pr(object)就是选择一个cell中与训练样本ground truth的IOU大的那个proposal为1，另一个为0，所以这个置信度即为IOU或0。</p>
+<h3 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h3><p> <img src="/images/15647070176656.jpg" alt="-w497"><br>如图所示，损失函数包括三部分：坐标回归损失、分类损失和置信度损失。坐标回归损失只是针对那些被认定为包含object的proposal才进行计算，对于没有检测到object的proposal不需要坐标回归的loss，分类损失也是检测到object的proposal要计算。还有一个置信度误差，不管有没有检测到object都要去计算。</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><ul>
+<li>每个vector的30维中只有一个20维的class probability ，但是有两个5维(4个坐标+1个置信度)向量，这代表了实际上7*7的feature map中的每一个单元都只能预测一个object，那么对于每个object为什么要使用两个回归向量呢？是为了精确地解决回归问题，最后这两个回归出来的proposal最多保留IOU大的那一个。</li>
+</ul>
 
       
     </div>
