@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="Deeplearning|MachineLearning|ComputerVision">
+  <meta name="description" content="经典CNN结构解析与实现">
 
 
 
+
+  <meta name="keywords" content="DeepLearning, Image Classification, Feature Extract, LiXuan's blog">
 
 
 
@@ -40,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/archives/2019/08/">
+<link rel="canonical" href="http://yoursite.com/2019/08/02/CNN-Network/">
 
 
 
@@ -88,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    Archives - LiXuan's blog
-  
-</title>
+    <title> 经典CNN结构解析与实现 - LiXuan's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -222,79 +220,135 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          经典CNN结构解析与实现
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            4 Posts In Total
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2019-08-02
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AlexNet"><span class="toc-text">AlexNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VGG"><span class="toc-text">VGG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inception-Net"><span class="toc-text">Inception Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ResNet"><span class="toc-text">ResNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DenseNet"><span class="toc-text">DenseNet</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>AlexNet </li>
+<li>VGG</li>
+<li>Google Inception Net </li>
+<li>ResNet</li>
+<li>DenseNet </li>
+<li>MobileNet </li>
+<li>Shuffle Net <a id="more"></a>
+</li>
+</ul>
+<p>实现代码地址：<a href="github.com/994047477">Github</a></p>
+<h2 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h2><ul>
+<li>首次使用CNN组建的深度网络在ImageNet上达到最好效果</li>
+<li>它使用Relu 激活函数代替了传统的激活函数(Sigmoid/Tanh)</li>
+<li>使用Dropout 解决过拟合问题</li>
+<li>计算量较大</li>
+</ul>
+<h2 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h2><ul>
+<li>VGG使用连续的几个3*3卷积核代替AlexNet中较大的卷积核，减少计算量。</li>
+<li>VGG Net中采用的卷积核是非常一致的，全都是3*3的filter</li>
+<li>VGG 分为4-5个block，每个block包含若干个<code>3*3</code>的卷积层和一个<code>2*2</code>的MaxPooling层所以得到的conv4_3是16倍的下采样的feature map</li>
+</ul>
+<h2 id="Inception-Net"><a href="#Inception-Net" class="headerlink" title="Inception Net"></a>Inception Net</h2><ul>
+<li>设计了Inception Block，采用了不同尺度的filter，size为<code>1*1`</code>3<em>3<code></code>5</em>5`，获得了不同scale的特征，具有对不同尺度特征的提取能力，而且还通过1*1的卷积层来大大降低运算。</li>
+<li>在卷积层结束后，使用全局AveragePooling，避免使用全连接层</li>
+</ul>
+<h2 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h2><ul>
+<li>在VGG网络后，研究人员发现仅仅堆叠越来越多层的CNN 或 全连接层等是无法再提高准确率，主要原因就是梯度消失的问题，因为在多层神经网络中，梯度传到最前面的网络层就非常接近0了，导致前面网络层的参数更新很慢。于是提出ResNet去解决这个梯度消失的问题。</li>
+<li>ResNet主要是设计了一个ResBlock。</li>
+</ul>
+<h2 id="DenseNet"><a href="#DenseNet" class="headerlink" title="DenseNet"></a>DenseNet</h2>
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://yoursite.com">leexuan</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://yoursite.com/2019/08/02/CNN-Network/">http://yoursite.com/2019/08/02/CNN-Network/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2019</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/DeepLearning/">DeepLearning</a>
+            
+              <a href="/tags/Image-Classification/">Image Classification</a>
+            
+              <a href="/tags/Feature-Extract/">Feature Extract</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-02
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/02/CNN-Network/" class="archive-post-link">
-            经典CNN结构解析与实现
-          </a>
-        </span>
-      </div>
-    
-      
         
         
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/01/YOLOv1/" class="archive-post-link">
-            《You Only Look Once》YOLOv1论文笔记
-          </a>
-        </span>
-      </div>
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
     
+      <a class="next" href="/2019/08/01/YOLOv1/">
+        <span class="next-text nav-default">《You Only Look Once》YOLOv1论文笔记</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -376,6 +430,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
