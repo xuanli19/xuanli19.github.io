@@ -250,17 +250,17 @@
 
     <div class="post-content">
       
-        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+        <p>实现代码地址：<a href="github.com/994047477">Github</a></p>
+<a id="more"></a>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
 <li>AlexNet </li>
 <li>VGG</li>
 <li>Google Inception Net </li>
 <li>ResNet</li>
 <li>DenseNet </li>
 <li>MobileNet </li>
-<li>Shuffle Net <a id="more"></a>
-</li>
+<li>Shuffle Net </li>
 </ul>
-<p>实现代码地址：<a href="github.com/994047477">Github</a></p>
 <h2 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h2><ul>
 <li>首次使用CNN组建的深度网络在ImageNet上达到最好效果</li>
 <li>它使用Relu 激活函数代替了传统的激活函数(Sigmoid/Tanh)</li>
@@ -273,7 +273,7 @@
 <li>VGG 分为4-5个block，每个block包含若干个<code>3*3</code>的卷积层和一个<code>2*2</code>的MaxPooling层所以得到的conv4_3是16倍的下采样的feature map</li>
 </ul>
 <h2 id="Inception-Net"><a href="#Inception-Net" class="headerlink" title="Inception Net"></a>Inception Net</h2><ul>
-<li>设计了Inception Block，采用了不同尺度的filter，size为<code>1*1`</code>3<em>3<code></code>5</em>5`，获得了不同scale的特征，具有对不同尺度特征的提取能力，而且还通过1*1的卷积层来大大降低运算。</li>
+<li>设计了Inception Block，采用了不同尺度的filter，size为<code>1*1</code>,<code>3*3</code>,<code>5*5</code>，获得了不同scale的特征，具有对不同尺度特征的提取能力，而且还通过1*1的卷积层来大大降低运算。</li>
 <li>在卷积层结束后，使用全局AveragePooling，避免使用全连接层</li>
 </ul>
 <h2 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h2><ul>
