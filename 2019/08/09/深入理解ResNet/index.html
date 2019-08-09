@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="Deeplearning|MachineLearning|ComputerVision">
+  <meta name="description" content="深入理解ResNet">
 
 
 
+
+  <meta name="keywords" content="Deep Learning, ResNet, CNN, LiXuan's blog">
 
 
 
@@ -40,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/archives/2018/10/">
+<link rel="canonical" href="http://yoursite.com/2019/08/09/深入理解ResNet/">
 
 
 
@@ -88,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    Archives - LiXuan's blog
-  
-</title>
+    <title> 深入理解ResNet - LiXuan's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -222,59 +220,115 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          深入理解ResNet
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            6 Posts In Total
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2019-08-09
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ResNet能够work的主要原因"><span class="toc-text">ResNet能够work的主要原因:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h3 id="ResNet能够work的主要原因"><a href="#ResNet能够work的主要原因" class="headerlink" title="ResNet能够work的主要原因:"></a>ResNet能够work的主要原因:</h3><ul>
+<li><p>能够更好地学习到差分特征，相当更容易学习到残差的那一部分。</p>
+</li>
+<li><p>集成学习，ResNet是由很多条路径集成学习得到的，对于每个block如果残差为0就退化为直连。如果所有resblock的残差都是0，那么就退化成VGG网络。</p>
+</li>
+<li>特征表示，跳层连接使得表达特征更加丰富，比如说前面网络层的浅层特征能够和深层的特征融合。2017年的DenseNet网络有类似的设计。</li>
+<li>缓解梯度消失问题，梯度能够直接传到skip connection前面的网络层<br><img src="/images/15653484381760.jpg" alt="-w687"></li>
+</ul>
+<p><img src="/images/15653484521031.jpg" alt="-w682"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://zhuanlan.zhihu.com/p/54289848" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/54289848</a></p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://yoursite.com">leexuan</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://yoursite.com/2019/08/09/深入理解ResNet/">http://yoursite.com/2019/08/09/深入理解ResNet/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2018</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/Deep-Learning/">Deep Learning</a>
+            
+              <a href="/tags/ResNet/">ResNet</a>
+            
+              <a href="/tags/CNN/">CNN</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            10-24
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2018/10/24/hello-world/" class="archive-post-link">
-            Hello World
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
     
+      <a class="next" href="/2019/08/08/Batch-Normalization/">
+        <span class="next-text nav-default">Batch Normalization解析</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -356,6 +410,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
