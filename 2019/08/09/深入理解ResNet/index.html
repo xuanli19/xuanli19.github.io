@@ -251,10 +251,8 @@
     <div class="post-content">
       
         <h3 id="ResNet能够work的主要原因"><a href="#ResNet能够work的主要原因" class="headerlink" title="ResNet能够work的主要原因:"></a>ResNet能够work的主要原因:</h3><ul>
-<li><p>能够更好地学习到差分特征，相当更容易学习到残差的那一部分。</p>
-</li>
-<li><p>集成学习，ResNet是由很多条路径集成学习得到的，对于每个block如果残差为0就退化为直连。如果所有resblock的残差都是0，那么就退化成VGG网络。</p>
-</li>
+<li>能够更好地学习到差分特征，相当更容易学习到残差的那一部分。<a id="more"></a></li>
+<li>集成学习，ResNet是由很多条路径集成学习得到的，对于每个block如果残差为0就退化为直连。如果所有resblock的残差都是0，那么就退化成VGG网络。</li>
 <li>特征表示，跳层连接使得表达特征更加丰富，比如说前面网络层的浅层特征能够和深层的特征融合。2017年的DenseNet网络有类似的设计。</li>
 <li>缓解梯度消失问题，梯度能够直接传到skip connection前面的网络层<br><img src="/images/15653484381760.jpg" alt="-w687"></li>
 </ul>
