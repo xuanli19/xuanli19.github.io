@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="深入理解ResNet">
+  <meta name="description" content="“好而不同”的集成学习">
 
 
 
 
-  <meta name="keywords" content="Deep Learning, ResNet, CNN, LiXuan's blog">
+  <meta name="keywords" content="Machine Learning, Ensemble Learning, LiXuan's blog">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/08/09/深入理解ResNet/">
+<link rel="canonical" href="http://yoursite.com/2019/08/11/解析集成学习/">
 
 
 
@@ -90,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> 深入理解ResNet - LiXuan's blog </title>
+    <title> “好而不同”的集成学习 - LiXuan's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -224,13 +224,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          深入理解ResNet
+          “好而不同”的集成学习
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-08-09
+          2019-08-11
         </span>
         
         
@@ -242,7 +242,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ResNet能够work的主要原因"><span class="toc-text">ResNet能够work的主要原因:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成学习（Ensemble-Learning）"><span class="toc-text">集成学习（Ensemble Learning）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“好而不同”"><span class="toc-text">“好而不同”</span></a></li></ol></li></ol>
     </div>
   </div>
 
@@ -250,14 +250,9 @@
 
     <div class="post-content">
       
-        <h3 id="ResNet能够work的主要原因"><a href="#ResNet能够work的主要原因" class="headerlink" title="ResNet能够work的主要原因:"></a>ResNet能够work的主要原因:</h3><ul>
-<li>能够更好地学习到差分特征，相当更容易学习到残差的那一部分。<a id="more"></a></li>
-<li>集成学习，ResNet是由很多条路径集成学习得到的，对于每个block如果残差为0就退化为直连。如果所有resblock的残差都是0，那么就退化成VGG网络。</li>
-<li>特征表示，跳层连接使得表达特征更加丰富，比如说前面网络层的浅层特征能够和深层的特征融合。2017年的DenseNet网络有类似的设计。</li>
-<li>缓解梯度消失问题，梯度能够直接传到skip connection前面的网络层<br><img src="/images/15653484381760.jpg" alt="-w687"></li>
-</ul>
-<p><img src="/images/15653484521031.jpg" alt="-w682"></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://zhuanlan.zhihu.com/p/54289848" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/54289848</a></p>
+        <h2 id="集成学习（Ensemble-Learning）"><a href="#集成学习（Ensemble-Learning）" class="headerlink" title="集成学习（Ensemble Learning）"></a>集成学习（Ensemble Learning）</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>集成学习的思想就是组合多个弱学习器，得到一个强学习器。但注意，弱学习器不能太弱，比如在分类中，弱学习器的准确率最少要达到50%.<br><a id="more"></a></p>
+<h3 id="“好而不同”"><a href="#“好而不同”" class="headerlink" title="“好而不同”"></a>“好而不同”</h3><p>集成学习强调”好而不同”，这里的”好”是指学习器效果还不错，只要不太差就行；这里的”不同”指的是这些要集成的学习器各自在不同的方面还不错，集合在一起就能互相弥补，正所谓“三个臭皮匠赛过诸葛亮”.  </p>
+<p>针对每个学习器的个体，在选择弱学习器的时候，倾向于选择神经网络(Neural Network)，决策树(Decision Tree)这种类型(给定数据训练出来的学习器有一定随机性)，而不是选择SVM,朴素贝叶斯这种(对给定数据训练出来的学习器相差不大的学习器)。举个栗子，因为如果选择SVM可能学出的多个学习器是相似的，集成在一起就取不到更好的效果。但是如果选择决策树，训练出来的多个学习器很可能分支决策很不相同。所以多个”各有所长”的弱学习器就有机会集成为一个强学习器。<br>另一方面，集成学习主要分为两种策略，Bagging和Boosting，在Bagging中首先是进行对给定数据进行N次Bootstrap抽样（又放回的抽样），然后训练N个弱学习器，这也体现了”不同”.在Boosting中，得到的多个学习器是在不同权重的数据样本下训练得到的，所以也是各有”不同”。</p>
 
       
     </div>
@@ -273,7 +268,7 @@
     </p>
     <p class="copyright-item">
       <span>Link: </span>
-      <a href="http://yoursite.com/2019/08/09/深入理解ResNet/">http://yoursite.com/2019/08/09/深入理解ResNet/</a>
+      <a href="http://yoursite.com/2019/08/11/解析集成学习/">http://yoursite.com/2019/08/11/解析集成学习/</a>
     </p>
     <p class="copyright-item">
       <span>License: </span>
@@ -293,11 +288,9 @@
         
           <div class="post-tags">
             
-              <a href="/tags/Deep-Learning/">Deep Learning</a>
+              <a href="/tags/Machine-Learning/">Machine Learning</a>
             
-              <a href="/tags/ResNet/">ResNet</a>
-            
-              <a href="/tags/CNN/">CNN</a>
+              <a href="/tags/Ensemble-Learning/">Ensemble Learning</a>
             
           </div>
         
@@ -305,15 +298,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/08/11/解析集成学习/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">“好而不同”的集成学习</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/08/08/Batch-Normalization/">
-        <span class="next-text nav-default">Batch Normalization解析</span>
+      <a class="next" href="/2019/08/09/深入理解ResNet/">
+        <span class="next-text nav-default">深入理解ResNet</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
