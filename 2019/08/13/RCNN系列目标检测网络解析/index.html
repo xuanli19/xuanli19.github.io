@@ -253,13 +253,13 @@
         <p>r-cnn:<a href="https://arxiv.org/pdf/1311.2524.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1311.2524.pdf</a><br>fast r-cnn: <a href="https://arxiv.org/pdf/1504.08083.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1504.08083.pdf</a><br>faster r-cnn : <a href="https://arxiv.org/pdf/1506.01497.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1506.01497.pdf</a></p>
 <h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>目标检测问题的起源:最初受到传统计算机视觉方法启发，使用滑动窗口检测器+SVM等分类器。但是有个问题:窗口的大小难以确定，因为物体是大小多样的。使用深度学习做目标检测的比较早期的方法就是R-CNN。</p>
 <a id="more"></a>
-<h2 id="R-CNN-Region-convolutional-neural-network"><a href="#R-CNN-Region-convolutional-neural-network" class="headerlink" title="R-CNN(Region convolutional  neural network)"></a>R-CNN(Region convolutional  neural network)</h2><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>输入一张图片，使用selective search（根据图像特征） 方法来提取region proposal （区域建议窗口），大约2000个左右，然后将 提取出来的2000个窗口 resize到统一尺寸，来符合CNN的输入，分别丢入CNN网络，然后用设计好的CNN的网络来提取特征，然后在最后加上SVM分类和BBox回归。<br><img src="/source/images/15657020239545.jpg" alt="-w628"></p>
+<h2 id="R-CNN-Region-convolutional-neural-network"><a href="#R-CNN-Region-convolutional-neural-network" class="headerlink" title="R-CNN(Region convolutional  neural network)"></a>R-CNN(Region convolutional  neural network)</h2><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>输入一张图片，使用selective search（根据图像特征） 方法来提取region proposal （区域建议窗口），大约2000个左右，然后将 提取出来的2000个窗口 resize到统一尺寸，来符合CNN的输入，分别丢入CNN网络，然后用设计好的CNN的网络来提取特征，然后在最后加上SVM分类和BBox回归。<br><img src="/images/15657020239545.jpg" alt="-w628"></p>
 <h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>需要对2000个proposal region逐个做CNN提取、分类、预测，很慢，而且有大量重复计算.</p>
 <h3 id="可以考虑的改进方案："><a href="#可以考虑的改进方案：" class="headerlink" title="可以考虑的改进方案："></a>可以考虑的改进方案：</h3><ul>
 <li>从窗口角度： 合理地选择窗口，减少运算量，提高运算效率</li>
 <li>从网络结构的角度： 比如使用VGG16 ，resnet inception 等网络，来提高特征提取的精度和速度</li>
 </ul>
-<h2 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h2><h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p>先做SS，选出2000个窗口，但是不切出来，然后对原图整个做CNN提取特征，然后在CNN输出的特征图中按照2000个窗口的位置来切割，与之前先提取窗口，然后对每个窗口做CNN特征提取的效果是一样的。但是Fast-Rcnn只需要对大图做一次CNN，而RCNN需要对2000个小图分别做CNN，运算量比较大。另一个是用softmax来替换SVM，然后最后训练是使得multi-loss下降，multi-loss 包括bbox回归损失和分类损失。<br><img src="/source/images/15657019529921.jpg" alt="-w826"></p>
+<h2 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h2><h3 id="流程-1"><a href="#流程-1" class="headerlink" title="流程"></a>流程</h3><p>先做SS，选出2000个窗口，但是不切出来，然后对原图整个做CNN提取特征，然后在CNN输出的特征图中按照2000个窗口的位置来切割，与之前先提取窗口，然后对每个窗口做CNN特征提取的效果是一样的。但是Fast-Rcnn只需要对大图做一次CNN，而RCNN需要对2000个小图分别做CNN，运算量比较大。另一个是用softmax来替换SVM，然后最后训练是使得multi-loss下降，multi-loss 包括bbox回归损失和分类损失。<br><img src="/images/15657019529921.jpg" alt="-w826"></p>
 <h3 id="改进-相对于R-CNN"><a href="#改进-相对于R-CNN" class="headerlink" title="改进(相对于R-CNN)"></a>改进(相对于R-CNN)</h3><ul>
 <li>先使用卷积网络对图像进行特征提取，然后共享这个提取出来的feature map</li>
 <li>因为使用SS提取的区域大小是不固定的，所以经过特征抽取网络后提取出来的feature map大小是不相同的，所以在特征抽取到分类回归层中间加上了ROI pooling网络结构，用于将不同大小的feature map分解成统一尺寸的特征(ROI pooling 的思想借鉴于 SPP-Net)。</li>
@@ -268,10 +268,10 @@
 <h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
 <li>使用SS的方法来提取2000个region开销太大，成为优化瓶颈，能否使用神经网络来寻找目标</li>
 </ul>
-<h2 id="Faster-R-CNN"><a href="#Faster-R-CNN" class="headerlink" title="Faster R-CNN"></a>Faster R-CNN</h2><p> <img src="/source/images/15657021321718.jpg" alt="-w816"></p>
-<h3 id="流程-2"><a href="#流程-2" class="headerlink" title="流程"></a>流程</h3><p>提出RPN网络（region proposal network）用于提取region，先在每个点找9个如图所示的anchor box<br><img src="/source/images/15657021740570.jpg" alt="-w422"></p>
-<p><img src="/source/images/15657021544738.jpg" alt="-w396"></p>
-<p>完整流程图<br><img src="/source/images/15657024091246.jpg" alt="-w703"></p>
+<h2 id="Faster-R-CNN"><a href="#Faster-R-CNN" class="headerlink" title="Faster R-CNN"></a>Faster R-CNN</h2><p> <img src="/images/15657021321718.jpg" alt="-w816"></p>
+<h3 id="流程-2"><a href="#流程-2" class="headerlink" title="流程"></a>流程</h3><p>提出RPN网络（region proposal network）用于提取region，先在每个点找9个如图所示的anchor box<br><img src="/images/15657021740570.jpg" alt="-w422"></p>
+<p><img src="/images/15657021544738.jpg" alt="-w396"></p>
+<p>完整流程图<br><img src="/images/15657024091246.jpg" alt="-w703"></p>
 
       
     </div>
