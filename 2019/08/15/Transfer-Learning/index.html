@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="Deeplearning|MachineLearning|ComputerVision">
+  <meta name="description" content="Fine tuning Tutorial">
 
 
 
+
+  <meta name="keywords" content="Deep Learning, LiXuan's blog">
 
 
 
@@ -40,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/archives/2019/08/">
+<link rel="canonical" href="http://yoursite.com/2019/08/15/Transfer-Learning/">
 
 
 
@@ -88,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    Archives - LiXuan's blog
-  
-</title>
+    <title> Fine tuning Tutorial - LiXuan's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -222,179 +220,114 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Fine tuning Tutorial
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            9 Posts In Total
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2019-08-15
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举个栗子"><span class="toc-text">举个栗子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技巧"><span class="toc-text">技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实战"><span class="toc-text">实战</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p> 在深度学习领域，进行一个模型的训练往往需要大量的数据，否则会造成无法很好地拟合的问题。但是大多数情况下，现有数据量都是不够让模型很好地训练。<br><a id="more"></a></p>
+<h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><p> 直接 from scratch 训练容易过拟合，比如你有少量训练图像都是雪地里的阿拉斯加犬，然后直接from scratch去训练模型，经过很多epoch的迭代训练，很可能会造成模型学到的特征阿拉斯加犬都是在雪地里面，然后你给一张在草地里的阿拉斯加犬就无法识别，反而你给一个在雪地里面的藏獒被错误识别成阿拉斯加犬。这就是过拟合，学习到了图片中非常个性的特征，不具有很好的泛化能力。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>Fine tuning就能较好地解决这个问题，现在常用的解决方案有两种:</p>
+<ul>
+<li>使用pretrained model 做Feature extract，然后再去做分类等任务。(也就是固定预训练模型参数，把预训练模型当成一个完整的特征提取器，然后将给定image转化成一个feature vector)</li>
+<li>使用pretrained model 做微调，增删模型后面若干层的网络结构，然后可以选择保留预训练模型的参数，这样可以保持模型的泛化能力，同时和后面调整的网络一起联合训练，使得模型更好地学习到新的数据特征。</li>
+</ul>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>解决了我们小样本下使用复杂网络上容易过拟合的问题 </li>
+<li>节省了训练时间，因为网络前面几层提取的特征具备一定的泛化能力</li>
+</ol>
+<h3 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h3><p>在数据量非常少的时候，建议使用预训练模型做特征抽取。在数据量较大的时候，建议使用fine tuning微调。</p>
+<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>TODO </p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://yoursite.com">leexuan</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://yoursite.com/2019/08/15/Transfer-Learning/">http://yoursite.com/2019/08/15/Transfer-Learning/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2019</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/Deep-Learning/">Deep Learning</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-15
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/15/Transfer-Learning/" class="archive-post-link">
-            Fine tuning Tutorial
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-13
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/13/RCNN系列目标检测网络解析/" class="archive-post-link">
-            R-CNN系列目标检测网络解析
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-11
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/11/解析集成学习/" class="archive-post-link">
-            “好而不同”的集成学习
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-09
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/09/深入理解ResNet/" class="archive-post-link">
-            深入理解ResNet
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-08
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/08/Batch-Normalization/" class="archive-post-link">
-            Batch Normalization解析
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-02
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/02/CNN-Network/" class="archive-post-link">
-            经典CNN结构解析与实现
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/01/YOLOv1/" class="archive-post-link">
-            《You Only Look Once》YOLOv1论文笔记
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2019/08/13/RCNN系列目标检测网络解析/">
+        <span class="next-text nav-default">R-CNN系列目标检测网络解析</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -476,6 +409,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
