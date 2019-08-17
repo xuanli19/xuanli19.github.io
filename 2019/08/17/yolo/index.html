@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="Deeplearning|MachineLearning|ComputerVision">
+  <meta name="description" content="YOLOv2/v3的改进">
 
 
 
+
+  <meta name="keywords" content="Deep Learning, LiXuan's blog">
 
 
 
@@ -40,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/archives/2019/08/">
+<link rel="canonical" href="http://yoursite.com/2019/08/17/yolo/">
 
 
 
@@ -88,11 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    Archives - LiXuan's blog
-  
-</title>
+    <title> YOLOv2/v3的改进 - LiXuan's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -222,219 +220,131 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          YOLOv2/v3的改进
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            11 Posts In Total
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2019-08-17
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#YOLOv1"><span class="toc-text">YOLOv1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YOLOv2-Better-Faster-Stronger"><span class="toc-text">YOLOv2 - Better,Faster,Stronger</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Better"><span class="toc-text">Better</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Faster"><span class="toc-text">Faster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stronger"><span class="toc-text">Stronger</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YOLOv3"><span class="toc-text">YOLOv3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#改进"><span class="toc-text">改进</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h2 id="YOLOv1"><a href="#YOLOv1" class="headerlink" title="YOLOv1"></a>YOLOv1</h2><p>###缺点</p>
+<ul>
+<li>对小目标检测效果不好</li>
+<li>提取的region太少了，<code>7*7*2</code></li>
+<li>坐标定位不准确<a id="more"></a>
+</li>
+</ul>
+<h2 id="YOLOv2-Better-Faster-Stronger"><a href="#YOLOv2-Better-Faster-Stronger" class="headerlink" title="YOLOv2 - Better,Faster,Stronger"></a>YOLOv2 - Better,Faster,Stronger</h2><h3 id="Better"><a href="#Better" class="headerlink" title="Better"></a>Better</h3><ul>
+<li>Batch Normalization </li>
+<li>引入 Anchor Box 来预测Bouding box</li>
+<li>维度聚类，使用K-means聚类bounding box，可以找到更好地box宽高</li>
+<li></li>
+</ul>
+<h3 id="Faster"><a href="#Faster" class="headerlink" title="Faster"></a>Faster</h3><ul>
+<li>借鉴VGG,NIN思想，多次使用<code>1*1</code>和<code>3*3</code>等较小的卷积核以及使用全局平均池化，设计出darknet-19模型，大大节约计算量</li>
+</ul>
+<h3 id="Stronger"><a href="#Stronger" class="headerlink" title="Stronger"></a>Stronger</h3><ul>
+<li>COCO数据集少，ImageNet数据集多，使用wordtree结合了两个数据集的标签，使得能够检测9000多种目标</li>
+</ul>
+<h2 id="YOLOv3"><a href="#YOLOv3" class="headerlink" title="YOLOv3"></a>YOLOv3</h2><h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><ul>
+<li>特征提取器，设计Darknet-53，融合了darknet-19和残差网络等，更高效地提取特征</li>
+<li>使用了多尺度预测，类似于 FPN(Feature Pyramid Network-特征金字塔网络)，三层不同scale的特征一起做bbox regression </li>
+<li>分类预测使用二元交叉熵损失，边界框bbox regression 使用 平方和距离误差损失</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://yoursite.com">leexuan</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://yoursite.com/2019/08/17/yolo/">http://yoursite.com/2019/08/17/yolo/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2019</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/Deep-Learning/">Deep Learning</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-17
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/17/object-detection-tutorial/" class="archive-post-link">
-            object detection tutorial
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-17
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/17/yolo/" class="archive-post-link">
-            YOLOv2/v3的改进
-          </a>
-        </span>
-      </div>
+      <a class="prev" href="/2019/08/17/object-detection-tutorial/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">object detection tutorial</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-15
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/15/Transfer-Learning/" class="archive-post-link">
-            Fine tuning Tutorial
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-13
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/13/RCNN系列目标检测网络解析/" class="archive-post-link">
-            R-CNN系列目标检测网络解析
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-11
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/11/解析集成学习/" class="archive-post-link">
-            “好而不同”的集成学习
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-09
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/09/深入理解ResNet/" class="archive-post-link">
-            深入理解ResNet
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-08
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/08/Batch-Normalization/" class="archive-post-link">
-            Batch Normalization解析
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-02
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/02/CNN-Network/" class="archive-post-link">
-            经典CNN结构解析与实现
-          </a>
-        </span>
-      </div>
-    
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            08-01
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/08/01/YOLOv1/" class="archive-post-link">
-            《You Only Look Once》YOLOv1论文笔记
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2019/08/15/Transfer-Learning/">
+        <span class="next-text nav-default">Fine tuning Tutorial</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -516,6 +426,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     

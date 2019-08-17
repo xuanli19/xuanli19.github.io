@@ -242,7 +242,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起源"><span class="toc-text">起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R-CNN-Region-convolutional-neural-network"><span class="toc-text">R-CNN(Region convolutional  neural network)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以考虑的改进方案："><span class="toc-text">可以考虑的改进方案：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fast-R-CNN"><span class="toc-text">Fast R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程-1"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改进-相对于R-CNN"><span class="toc-text">改进(相对于R-CNN)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Faster-R-CNN"><span class="toc-text">Faster R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程-2"><span class="toc-text">流程</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#起源"><span class="toc-text">起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R-CNN-Region-convolutional-neural-network"><span class="toc-text">R-CNN(Region convolutional  neural network)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以考虑的改进方案："><span class="toc-text">可以考虑的改进方案：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fast-R-CNN"><span class="toc-text">Fast R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程-1"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改进-相对于R-CNN"><span class="toc-text">改进(相对于R-CNN)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Faster-R-CNN"><span class="toc-text">Faster R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#流程-2"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mask-R-CNN"><span class="toc-text">Mask R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#改进"><span class="toc-text">改进</span></a></li></ol></li></ol>
     </div>
   </div>
 
@@ -272,6 +272,14 @@
 <h3 id="流程-2"><a href="#流程-2" class="headerlink" title="流程"></a>流程</h3><p>提出RPN网络（region proposal network）用于提取region，先在每个点找9个如图所示的anchor box<br><img src="/images/15657021740570.jpg" alt="-w422"></p>
 <p><img src="/images/15657021544738.jpg" alt="-w396"></p>
 <p>完整流程图<br><img src="/images/15657024091246.jpg" alt="-w703"></p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>使用RPN网络代替传统SS(Selective Search)提取region proposal的策略，大量缩短时间</li>
+</ul>
+<h2 id="Mask-R-CNN"><a href="#Mask-R-CNN" class="headerlink" title="Mask R-CNN"></a>Mask R-CNN</h2><h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><ul>
+<li>使用ROI Align 代替 ROI Pooling，使得检测更加精确</li>
+<li>使用更强的特征提取网络ResNeXt替换VGG</li>
+<li>在分类和回归分支加一个pixel级别的K(K是类别数)个feature map，用于预测原来图片每个pixel属于哪些类别</li>
+</ul>
 
       
     </div>
