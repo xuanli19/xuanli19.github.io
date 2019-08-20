@@ -17,12 +17,12 @@
 
 
 
-  <meta name="description" content="经典CNN结构解析与实现">
+  <meta name="description" content="R-FCN 更快的检测">
 
 
 
 
-  <meta name="keywords" content="Deep Learning, Image Classification, Feature Extract, LiXuan's blog">
+  <meta name="keywords" content="Deep Learning, Object Detection, LiXuan's blog">
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2019/08/02/CNN-Network/">
+<link rel="canonical" href="http://yoursite.com/2019/08/20/R-FCN/">
 
 
 
@@ -90,7 +90,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title> 经典CNN结构解析与实现 - LiXuan's blog </title>
+    <title> R-FCN 更快的检测 - LiXuan's blog </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -224,13 +224,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          经典CNN结构解析与实现
+          R-FCN 更快的检测
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2019-08-02
+          2019-08-20
         </span>
         
         
@@ -239,80 +239,13 @@
 
     
     
-  <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">Contents</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AlexNet"><span class="toc-text">AlexNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VGG"><span class="toc-text">VGG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inception-Net"><span class="toc-text">Inception Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ResNet"><span class="toc-text">ResNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DenseNet"><span class="toc-text">DenseNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MobileNet"><span class="toc-text">MobileNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SqueezeNet"><span class="toc-text">SqueezeNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shuffle-Net"><span class="toc-text">Shuffle Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NIN-Network-In-Network"><span class="toc-text">NIN(Network In Network)</span></a></li></ol></li></ol>
-    </div>
-  </div>
-
 
 
     <div class="post-content">
       
-        <p>实现代码地址：<a href="https://github.com/994047477" target="_blank" rel="noopener">Github</a></p>
-<a id="more"></a>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
-<li>AlexNet </li>
-<li>VGG</li>
-<li>Google Inception Net </li>
-<li>ResNet</li>
-<li>DenseNet </li>
-<li>MobileNet </li>
-<li>Shuffle Net </li>
-</ul>
-<h2 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h2><ul>
-<li>首次使用CNN组建的深度网络在ImageNet上达到最好效果</li>
-<li>它使用Relu 激活函数代替了传统的激活函数(Sigmoid/Tanh)</li>
-<li>使用Dropout 解决过拟合问题</li>
-<li>计算量较大</li>
-</ul>
-<h2 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h2><ul>
-<li>VGG使用连续的几个3*3卷积核代替AlexNet中较大的卷积核，减少计算量。</li>
-<li>VGG Net中采用的卷积核是非常一致的，全都是3*3的filter</li>
-<li>VGG 分为4-5个block，每个block包含若干个<code>3*3</code>的卷积层和一个<code>2*2</code>的MaxPooling层所以得到的conv4_3是16倍的下采样的feature map</li>
-<li><img src="/images/15652497429318.jpg" alt="-w422"></li>
-</ul>
-<h2 id="Inception-Net"><a href="#Inception-Net" class="headerlink" title="Inception Net"></a>Inception Net</h2><ul>
-<li>设计了Inception Block，采用了不同尺度的filter，size为<code>1*1</code>,<code>3*3</code>,<code>5*5</code>，获得了不同scale的特征，具有对不同尺度特征的提取能力，而且还通过1*1的卷积层来大大降低运算。</li>
-<li>在卷积层结束后，使用全局AveragePooling，避免使用全连接层</li>
-<li><img src="/images/15652496914927.jpg" alt="-w945"></li>
-</ul>
-<h2 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h2><ul>
-<li>在VGG网络后，研究人员发现仅仅堆叠越来越多层的CNN 或 全连接层等是无法再提高准确率，主要原因就是梯度消失的问题，因为在多层神经网络中，梯度传到最前面的网络层就非常接近0了，导致前面网络层的参数更新很慢。于是提出ResNet去解决这个梯度消失的问题。</li>
-<li>ResNet主要是设计了一个ResBlock。ResBlock使用skip connect 跳层连接，使得梯度能够有效地回传，从而参数得以更新，才敢设计比VGG深很多的网络。</li>
-<li><img src="/images/15652496389998.jpg" alt="-w260"></li>
-</ul>
-<h2 id="DenseNet"><a href="#DenseNet" class="headerlink" title="DenseNet"></a>DenseNet</h2><ul>
-<li>设计思路与ResNet非常相似，但实际上一个很大的区别是，它是做多channel的特征的拼接，而ResNet是做求和计算</li>
-<li>DenseNet主要包含两个模块，DenseBlock和Transition层，每个DenseBlock的内部是将第N层之前的feature map都经过卷积处理到固定shape拼接到第N层，Transition作为缓冲层是将维度进行降低，减少计算量</li>
-<li>优点：梯度消失问题得到改善，特征复用，使用了multi-scale的特征,参数少，因为特征图的channel不像之前的那么多</li>
-<li><img src="/images/15652495846430.jpg" alt="-w652"></li>
-</ul>
-<h2 id="MobileNet"><a href="#MobileNet" class="headerlink" title="MobileNet"></a>MobileNet</h2><ul>
-<li>解决深度学习网络移动设备上的运行速度问题，提出的高效的网络，在模型大小显著减少的情况下，对准确率不造成太大影响</li>
-<li>使用 depthwise separable convolution 代替传统卷积网络。</li>
-<li><p>depthwise separable convolution </p>
+        <p>R-FCN: Object Detection via Region-based Fully Convolutional Networks<br><a id="more"></a></p>
 <ul>
-<li>depthwise卷积<ul>
-<li>对输入的<code>D*D*M</code>的M个通道，每个通道使用一个filter进行卷积，即使用M个卷积核分别对M个通道进行卷积，得到feature map<code>D*D*M</code></li>
-</ul>
-</li>
-<li>pointwise卷积<ul>
-<li>对经过上面步骤得到的feature map<code>D*D*M</code>的每个cell(shape为 <code>1*1*M</code>) 使用<code>1*1*M*N</code>卷积核进行卷积</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><img src="/images/15652495144548.jpg" alt="-w342"></p>
-</li>
-</ul>
-<h2 id="SqueezeNet"><a href="#SqueezeNet" class="headerlink" title="SqueezeNet"></a>SqueezeNet</h2><h2 id="Shuffle-Net"><a href="#Shuffle-Net" class="headerlink" title="Shuffle Net"></a>Shuffle Net</h2><h2 id="NIN-Network-In-Network"><a href="#NIN-Network-In-Network" class="headerlink" title="NIN(Network In Network)"></a>NIN(Network In Network)</h2><ul>
-<li>提出<code>1*1</code>的卷积filter来构建新的卷积单元<ul>
-<li><code>1*1</code>的卷积核的优势: 减少运算，加强多通道的特征融合，提高模型非线性变换能力</li>
-</ul>
-</li>
-<li>使用average pooling 来代替最后面的全连接层，大大减少计算量</li>
+<li>概述<br>R-FCN 提出了position-sensitive score maps去解决平移不变性，而且可以轻易为R-FCN替换各种全卷积特征抽取网络(如ResNet等)，相比较Faster R-CNN系列，能够共享更多的运算，提升速度。</li>
 </ul>
 
       
@@ -329,7 +262,7 @@
     </p>
     <p class="copyright-item">
       <span>Link: </span>
-      <a href="http://yoursite.com/2019/08/02/CNN-Network/">http://yoursite.com/2019/08/02/CNN-Network/</a>
+      <a href="http://yoursite.com/2019/08/20/R-FCN/">http://yoursite.com/2019/08/20/R-FCN/</a>
     </p>
     <p class="copyright-item">
       <span>License: </span>
@@ -351,9 +284,7 @@
             
               <a href="/tags/Deep-Learning/">Deep Learning</a>
             
-              <a href="/tags/Image-Classification/">Image Classification</a>
-            
-              <a href="/tags/Feature-Extract/">Feature Extract</a>
+              <a href="/tags/Object-Detection/">Object Detection</a>
             
           </div>
         
@@ -361,15 +292,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/08/08/Batch-Normalization/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Batch Normalization解析</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
     
-    
-      <a class="next" href="/2019/08/01/YOLOv1/">
-        <span class="next-text nav-default">《You Only Look Once》YOLOv1论文笔记</span>
+      <a class="next" href="/2019/08/17/object-detection-tutorial/">
+        <span class="next-text nav-default">object detection tutorial</span>
         <span class="prev-text nav-mobile">Next</span>
         <i class="iconfont icon-right"></i>
       </a>
