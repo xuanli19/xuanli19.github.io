@@ -261,7 +261,7 @@
     <div class="post-content">
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前在把爬虫部署到实验室的服务器上，让它不间断的爬取，但是第二天早上发现爬虫终止了，仔细一看才发现是网络异常，原因是复旦的校网每天早上3：00都要断掉所有连接。所以我就要用这个crontab指令让它在3:01的时候把网络给连上。<br><a id="more"></a><br>通过crontab 命令，我们可以在固定的间隔时间执行指定的系统指令或 shell script脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。这个命令非常适合周期性的日志分析或数据备份等工作。</p>
-<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>执行 <code>crontab -e</code> 编辑当前用户的crontab文件内容，<br><img src="../images/2020-01-03-21-37-23.png" alt=""></p>
+<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>执行 <code>crontab -e</code> 编辑当前用户的crontab文件内容，<br><img src="/images/2020-01-03-21-37-23.png" alt=""></p>
 <blockquote>
 <h1 id="m-h-dom-mon-dow-command"><a href="#m-h-dom-mon-dow-command" class="headerlink" title="m h  dom mon dow   command"></a>m h  dom mon dow   command</h1><p>01 3 <em> </em> * /etc/profile;/bin/bash  /home/lixuan/tmp/auto_login.sh</p>
 </blockquote>
