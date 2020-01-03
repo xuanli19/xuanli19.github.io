@@ -247,28 +247,17 @@
       
         
         
+          
+        
 
         
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前在把爬虫部署到实验室的服务器上，让它不间断的爬取，但是第二天早上发现爬虫终止了，仔细一看才发现是网络异常，原因是复旦的校网每天早上3：00都要断掉所有连接。所以我就要用这个crontab指令让它在3:01的时候把网络给连上。</p>
-<p>通过crontab 命令，我们可以在固定的间隔时间执行指定的系统指令或 shell script脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。这个命令非常适合周期性的日志分析或数据备份等工作。</p>
-<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>执行 <code>crontab -e</code> 编辑当前用户的crontab文件内容，<br><img src="../images/2020-01-03-21-37-23.png" alt=""></p>
-<blockquote>
-<h1 id="m-h-dom-mon-dow-command"><a href="#m-h-dom-mon-dow-command" class="headerlink" title="m h  dom mon dow   command"></a>m h  dom mon dow   command</h1><p>01 3 <em> </em> * /etc/profile;/bin/bash  /home/lixuan/tmp/auto_login.sh</p>
-</blockquote>
-<ol>
-<li>第1列分钟0～59</li>
-<li>第2列小时0～23（0表示子夜）</li>
-<li>第3列日1～31</li>
-<li>第4列月1～12</li>
-<li>第5列星期0～7（0和7表示星期天）</li>
-<li>第6列要运行的命令</li>
-</ol>
-<p>格式如上所示，就是设置的每天的3:01执行<code>/home/lixuan/tmp/auto_login.sh</code>脚本，这个脚本就是连接校网的脚本。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] <a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html" target="_blank" rel="noopener">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html</a></p>
-
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前在把爬虫部署到实验室的服务器上，让它不间断的爬取，但是第二天早上发现爬虫终止了，仔细一看才发现是网络异常，原因是复旦的校网每天早上3：00都要断掉所有连接。所以我就要用这个crontab指令让它在3:01的时候把网络给连上。<br>
+          <div class="read-more">
+            <a href="/2019/12/18/Linux-定时任务/" class="read-more-link">Read more..</a>
+          </div>
         
       
-    </div>
+    </p></div>
 
     
 
@@ -322,7 +311,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2019/12/18/docker-深度学习环境部署/">docker 深度学习环境部署</a>
+          <a class="post-link" href="/2019/12/18/docker-深度学习环境部署/">docker深度学习环境部署</a>
         
       </h1>
 
@@ -343,12 +332,17 @@
       
         
         
-
-        
           
         
+
+        
+          <h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><p>占坑，用docker来配置深度学习环境<br>
+          <div class="read-more">
+            <a href="/2019/12/18/docker-深度学习环境部署/" class="read-more-link">Read more..</a>
+          </div>
+        
       
-    </div>
+    </p></div>
 
     
 
@@ -383,12 +377,17 @@
       
         
         
-
-        
           
         
+
+        
+          <p>在做高级软件工程作业的时候遇到的问题，看到了一篇论文，觉得方法比较有个性，当时做的是代码推荐的任务，所以比较有效。作者提出的一种Position Token的方法来解决OOV问题。<br>
+          <div class="read-more">
+            <a href="/2019/12/18/OOV-problem-solution/" class="read-more-link">Read more..</a>
+          </div>
+        
       
-    </div>
+    </p></div>
 
     
 
@@ -423,12 +422,17 @@
       
         
         
-
-        
           
         
+
+        
+          <p>19年IJCAI上的一篇文章，当时正好想要回顾一下XGBoost算法，所以就选择了这篇文章当成机器学习理论课程的Presentation Paper，所以做了一个<a href="/downloads/augboost.pdf">Slides</a>.<br>
+          <div class="read-more">
+            <a href="/2019/10/23/AugBoost/" class="read-more-link">Read more..</a>
+          </div>
+        
       
-    </div>
+    </p></div>
 
     
 
@@ -463,9 +467,15 @@
       
         
         
+          
+        
 
         
-          
+          <p>占坑，有时间再更</p>
+<h1 id="L1-和L2-正则化的原理"><a href="#L1-和L2-正则化的原理" class="headerlink" title="L1 和L2 正则化的原理"></a>L1 和L2 正则化的原理</h1>
+          <div class="read-more">
+            <a href="/2019/10/23/线性回归正则化/" class="read-more-link">Read more..</a>
+          </div>
         
       
     </div>
@@ -503,12 +513,17 @@
       
         
         
-
-        
           
         
+
+        
+          <p>占坑，有时间再更<br>
+          <div class="read-more">
+            <a href="/2019/10/23/NaiveBayes/" class="read-more-link">Read more..</a>
+          </div>
+        
       
-    </div>
+    </p></div>
 
     
 
