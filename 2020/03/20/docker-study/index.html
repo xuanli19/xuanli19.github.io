@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/2020/03/20/docker-深度学习环境部署/"/>
+<link rel="canonical" href="http://yoursite.com/2020/03/20/docker-study/"/>
 
 
 
@@ -280,63 +280,7 @@
       
         <h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><h3 id="配置国内镜像源"><a href="#配置国内镜像源" class="headerlink" title="配置国内镜像源"></a>配置国内镜像源</h3><ul>
 <li>比如申请阿里云的加速镜像地址<a id="more"></a>
-
-</li>
-</ul>
-<h3 id="docker-指令"><a href="#docker-指令" class="headerlink" title="docker 指令"></a>docker 指令</h3><ul>
-<li><code>docker images</code> <ul>
-<li><code>docker images -a</code> </li>
-<li><code>docker images -aq</code></li>
-</ul>
-</li>
-<li><code>docker search 镜像名</code> 在dockerhub 中寻找镜像</li>
-<li><code>docker pull 镜像名</code> 在镜像源Pull镜像到本地</li>
-<li><code>docker rmi</code> 删除镜像<ul>
-<li><code>docker rmi -f 镜像ID</code> 删除指定镜像</li>
-<li><code>docker rmi -f $(docker images -qa)</code> 删除所有镜像</li>
-</ul>
-</li>
-<li><code>docker run</code> 新建并启动容器<ul>
-<li><code>docker run -i -t imageid</code>  交互式登入容器，并进入伪终端(-i 和 -t 可以一起写成 -it )</li>
-<li><code>docker run -it  --name 新命名  imageid</code>  给登入容器取个名字</li>
-<li><code>docker run -d 镜像名</code> 后台启动容器 </li>
-</ul>
-</li>
-<li><code>docker ps</code> 当前运行的容器</li>
-<li>docker 退出 <ul>
-<li><code>exit</code>  关闭容器并退出</li>
-<li><code>ctrl+P+Q</code> 容器不停止退出</li>
-</ul>
-</li>
-<li>docker 启动容器<ul>
-<li><code>docker start 容器ID</code></li>
-</ul>
-</li>
-<li>docker 重启容器<ul>
-<li><code>docker restart</code> </li>
-</ul>
-</li>
-<li>docker 停止容器<ul>
-<li><code>docker stop 容器ID</code> 一般停止</li>
-<li><code>docker kill 容器ID</code> 强制停止</li>
-</ul>
-</li>
-<li>docker 删除容器<ul>
-<li><code>docker rm  容器ID</code> (rmi 是删除镜像,rm是删除容器)</li>
-<li>删除多容器 <code>docker rm -f $(docker ps -aq)</code></li>
-<li>等价于 <code>docker ps -aq | xargs docker rm</code></li>
-</ul>
-</li>
-<li>docker 容器信息 <ul>
-<li><code>docker top 容器ID</code> 容器正在运行的进程</li>
-<li><code>docker inspect 容器ID</code> 容器内部细节json形式返回</li>
-<li>与正在运行的容器进行交互<ul>
-<li><code>docker exec -it 容器ID 执行的指令</code> 比如说可以直接在外面命令容器执行指令而不需要登进去,<code>ls -l</code>、 <code>python demo.py</code> ,也可以/bin/bash 登入</li>
-<li><code>docker attach 容器ID</code> 登进正在运行的容器  </li>
-<li><code>docker cp 容器ID:/tmp.yum.log /home</code> 将容器中的文件拷到宿主机</li>
-</ul>
-</li>
-</ul>
+<h3 id="docker-指令"><a href="#docker-指令" class="headerlink" title="docker 指令"></a>docker 指令</h3><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span><span class="code">`docker images`</span>   </span><br><span class="line">   + <span class="code">`docker images -a`</span>    </span><br><span class="line">   + <span class="code">`docker images -aq `</span>  </span><br><span class="line"><span class="bullet">- </span><span class="code">`docker search 镜像名 `</span> 在dockerhub 中寻找镜像</span><br><span class="line"><span class="bullet">- </span><span class="code">`docker pull 镜像名`</span> 在镜像源Pull镜像到本地</span><br><span class="line"><span class="bullet">- </span><span class="code">`docker rmi `</span> 删除镜像</span><br><span class="line"><span class="code">    * `docker rmi -f 镜像ID` 删除指定镜像</span></span><br><span class="line"><span class="code">    * `docker rmi -f $(docker images -qa)` 删除所有镜像</span></span><br><span class="line"><span class="bullet">- </span><span class="code">`docker run `</span> 新建并启动容器</span><br><span class="line"><span class="code">    * `docker run -i -t imageid`  交互式登入容器，并进入伪终端(-i 和 -t 可以一起写成 -it )</span></span><br><span class="line"><span class="code">    * `docker run -it  --name 新命名  imageid`  给登入容器取个名字</span></span><br><span class="line"><span class="code">    * `docker run -d 镜像名` 后台启动容器 </span></span><br><span class="line"><span class="bullet">-  </span><span class="code">`docker ps`</span> 当前运行的容器</span><br><span class="line"><span class="bullet">- </span>docker 退出 </span><br><span class="line"><span class="code">    *  `exit`  关闭容器并退出</span></span><br><span class="line"><span class="code">    *  `ctrl+P+Q` 容器不停止退出</span></span><br><span class="line"><span class="bullet">- </span>docker 启动容器</span><br><span class="line"><span class="code">    * `docker start 容器ID`</span></span><br><span class="line"><span class="bullet">- </span>docker 重启容器</span><br><span class="line"><span class="code">    * `docker restart` </span></span><br><span class="line"><span class="bullet">- </span>docker 停止容器</span><br><span class="line"><span class="code">    * `docker stop 容器ID` 一般停止</span></span><br><span class="line"><span class="code">    * `docker kill 容器ID` 强制停止</span></span><br><span class="line"><span class="bullet">- </span>docker 删除容器</span><br><span class="line"><span class="code">    * `docker rm  容器ID` (rmi 是删除镜像,rm是删除容器)</span></span><br><span class="line"><span class="code">    * 删除多容器 `docker rm -f $(docker ps -aq)`</span></span><br><span class="line"><span class="code">    * 等价于 `docker ps -aq | xargs docker rm `</span></span><br><span class="line"><span class="bullet">- </span>docker 容器信息 </span><br><span class="line"><span class="code">    * `docker top 容器ID` 容器正在运行的进程</span></span><br><span class="line"><span class="code">    * `docker inspect 容器ID` 容器内部细节json形式返回</span></span><br><span class="line"><span class="code">    * 与正在运行的容器进行交互</span></span><br><span class="line"><span class="code">        - `docker exec -it 容器ID 执行的指令` 比如说可以直接在外面命令容器执行指令而不需要登进去,`ls -l`、 `python demo.py` ,也可以/bin/bash 登入</span></span><br><span class="line"><span class="code">        - `docker attach 容器ID ` 登进正在运行的容器  </span></span><br><span class="line"><span class="code">        - `docker cp 容器ID:/tmp.yum.log /home` 将容器中的文件拷到宿主机</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -354,7 +298,7 @@
     </p>
     <p class="copyright-item">
       <span>Link: </span>
-      <a href="http://yoursite.com/2020/03/20/docker-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">http://yoursite.com/2020/03/20/docker-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</a>
+      <a href="http://yoursite.com/2020/03/20/docker-study/">http://yoursite.com/2020/03/20/docker-study/</a>
     </p>
     <p class="copyright-item">
       <span>License: </span>
@@ -414,7 +358,7 @@
     
       
         
-          <a href="mailto:lixuan980726@gmail.com" class="iconfont icon-email" title="email"></a>
+          <a href="mailto:xuanli19atfudan.edu.cn" class="iconfont icon-email" title="email"></a>
         
       
     
