@@ -17,10 +17,12 @@
 
 
 
-  <meta name="description" content="Deeplearning|MachineLearning|ComputerVision"/>
+  <meta name="description" content="docker入门"/>
 
 
 
+
+  <meta name="keywords" content="docker, LiXuan's blog" />
 
 
 
@@ -40,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/archives/2019/12/"/>
+<link rel="canonical" href="http://yoursite.com/2020/03/20/docker-深度学习环境部署/"/>
 
 
 
@@ -98,11 +100,7 @@
   window.config = {"leancloud":"","toc":true,"fancybox":true,"pjax":true};
 </script>
 
-    <title>
-  
-    Archives - LiXuan's blog
-  
-</title>
+    <title> docker入门 - LiXuan's blog </title>
   <meta name="generator" content="Hexo 4.2.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -250,99 +248,162 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          docker入门
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            27 Posts In Total
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-20
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装docker"><span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置国内镜像源"><span class="toc-text">配置国内镜像源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-指令"><span class="toc-text">docker 指令</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><h3 id="配置国内镜像源"><a href="#配置国内镜像源" class="headerlink" title="配置国内镜像源"></a>配置国内镜像源</h3><ul>
+<li>比如申请阿里云的加速镜像地址<a id="more"></a>
+
+</li>
+</ul>
+<h3 id="docker-指令"><a href="#docker-指令" class="headerlink" title="docker 指令"></a>docker 指令</h3><ul>
+<li><code>docker images</code> <ul>
+<li><code>docker images -a</code> </li>
+<li><code>docker images -aq</code></li>
+</ul>
+</li>
+<li><code>docker search 镜像名</code> 在dockerhub 中寻找镜像</li>
+<li><code>docker pull 镜像名</code> 在镜像源Pull镜像到本地</li>
+<li><code>docker rmi</code> 删除镜像<ul>
+<li><code>docker rmi -f 镜像ID</code> 删除指定镜像</li>
+<li><code>docker rmi -f $(docker images -qa)</code> 删除所有镜像</li>
+</ul>
+</li>
+<li><code>docker run</code> 新建并启动容器<ul>
+<li><code>docker run -i -t imageid</code>  交互式登入容器，并进入伪终端(-i 和 -t 可以一起写成 -it )</li>
+<li><code>docker run -it  --name 新命名  imageid</code>  给登入容器取个名字</li>
+<li><code>docker run -d 镜像名</code> 后台启动容器 </li>
+</ul>
+</li>
+<li><code>docker ps</code> 当前运行的容器</li>
+<li>docker 退出 <ul>
+<li><code>exit</code>  关闭容器并退出</li>
+<li><code>ctrl+P+Q</code> 容器不停止退出</li>
+</ul>
+</li>
+<li>docker 启动容器<ul>
+<li><code>docker start 容器ID</code></li>
+</ul>
+</li>
+<li>docker 重启容器<ul>
+<li><code>docker restart</code> </li>
+</ul>
+</li>
+<li>docker 停止容器<ul>
+<li><code>docker stop 容器ID</code> 一般停止</li>
+<li><code>docker kill 容器ID</code> 强制停止</li>
+</ul>
+</li>
+<li>docker 删除容器<ul>
+<li><code>docker rm  容器ID</code> (rmi 是删除镜像,rm是删除容器)</li>
+<li>删除多容器 <code>docker rm -f $(docker ps -aq)</code></li>
+<li>等价于 <code>docker ps -aq | xargs docker rm</code></li>
+</ul>
+</li>
+<li>docker 容器信息 <ul>
+<li><code>docker top 容器ID</code> 容器正在运行的进程</li>
+<li><code>docker inspect 容器ID</code> 容器内部细节json形式返回</li>
+<li>与正在运行的容器进行交互<ul>
+<li><code>docker exec -it 容器ID 执行的指令</code> 比如说可以直接在外面命令容器执行指令而不需要登进去,<code>ls -l</code>、 <code>python demo.py</code> ,也可以/bin/bash 登入</li>
+<li><code>docker attach 容器ID</code> 登进正在运行的容器  </li>
+<li><code>docker cp 容器ID:/tmp.yum.log /home</code> 将容器中的文件拷到宿主机</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://yoursite.com">leexuan</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://yoursite.com/2020/03/20/docker-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">http://yoursite.com/2020/03/20/docker-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2019</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/docker/">docker</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/12/18/Linux-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" class="archive-post-link">
-            Linux定时任务-crontab
-          </a>
-        </span>
-      </div>
+        
+        
+  <nav class="post-nav">
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/12/18/Tmux-%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="archive-post-link">
-            Tmux 简单使用
-          </a>
-        </span>
-      </div>
     
-      
-        
-        
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            12-18
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2019/12/18/OOV-problem-solution/" class="archive-post-link">
-            OOV问题解决方案
-          </a>
-        </span>
-      </div>
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
+      <a class="next" href="/2020/01/30/%E6%94%B9%E8%BF%9B%E7%89%88%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
+        <span class="next-text nav-default">改进版梯度下降</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -417,6 +478,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
