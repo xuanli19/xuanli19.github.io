@@ -270,7 +270,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单介绍"><span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac-安装-Tmux"><span class="toc-text">Mac 安装 Tmux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tmux-使用"><span class="toc-text">Tmux 使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用方法"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
     </div>
   </div>
 
@@ -278,7 +278,30 @@
 
     <div class="post-content">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>占坑，有时间再更<br><a id="more"></a></p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在跑深度学习程序的时候，总不能一直等着这个进程结束再干活吧，所以我们就需要让这个进程在后台运行，我们可以在前台干其他活。<br><br>大四的时候在实验室被突突突同学安利了Tmux，当时一直用的是nohup，没有体验到差距。<br></p>
+<a id="more"></a>
+<p>大四暑假的时候，就体验了一下Tmux的终端复用，真香!!!</p>
+<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>Tmux 是一款终端复用软件，</p>
+<h2 id="Mac-安装-Tmux"><a href="#Mac-安装-Tmux" class="headerlink" title="Mac 安装 Tmux"></a>Mac 安装 Tmux</h2><ul>
+<li><code>brew install tmux</code></li>
+</ul>
+<h2 id="Tmux-使用"><a href="#Tmux-使用" class="headerlink" title="Tmux 使用"></a>Tmux 使用</h2><ul>
+<li><code>tmux ls</code>  展示所有的tmux任务</li>
+<li><code>tmux at -t 任务名</code>  用来恢复指定任务窗口</li>
+<li><code>tmux a</code>进入最近的一个的任务中</li>
+<li><code>ctrl+b   d</code> 将当前tmux任务拉到后台运行</li>
+<li><code>ctrl+b   s</code> 弹出当前tmux中所有的任务列表，可以上下选择进入</li>
+<li><code>tmux new -s 任务名</code> 创建指定任务名的任务</li>
+<li><code>tmux kill-session -t 任务名</code> 删除指定任务</li>
+<li><code>tmux kill-server</code>  关闭服务器，所有的会话都将关闭</li>
+</ul>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
+<li>有了Tmux 之后，就是先new一个train session <code>tmux new -s train</code>,然后挂起<code>control +B +D</code>,这样不影响服务器正常使用，也能隔一段时间进入这个tmux终端<code>tmux -at -t train</code>看看模型训练情况。&gt;_&lt; ….. </li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/" target="_blank" rel="noopener">http://louiszhai.github.io/2017/09/30/tmux/</a></li>
+<li><a href="http://cenalulu.github.io/linux/tmux/" target="_blank" rel="noopener">http://cenalulu.github.io/linux/tmux/</a></li>
+</ul>
 
       
     </div>
