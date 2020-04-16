@@ -270,7 +270,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">Contents</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OverFeat"><span class="toc-text">OverFeat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSD"><span class="toc-text">SSD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FPN"><span class="toc-text">FPN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R-FCN"><span class="toc-text">R-FCN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RetinaNet"><span class="toc-text">RetinaNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SPPNet"><span class="toc-text">SPPNet</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OverFeat"><span class="toc-text">OverFeat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSD"><span class="toc-text">SSD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FPN"><span class="toc-text">FPN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R-FCN-Object-Detection-via-Region-based-Fully-Convolutional-Networks"><span class="toc-text">R-FCN: Object Detection via Region-based Fully Convolutional Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RetinaNet"><span class="toc-text">RetinaNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SPPNet"><span class="toc-text">SPPNet</span></a></li></ol>
     </div>
   </div>
 
@@ -282,7 +282,11 @@
 <li>提出将图像分类，目标检测分割等任务使用同一套网络做特征提取的思想，前面的几层网络特征抽取层可以公用，只需要改动最后面几层输出层即可，为后来很多的目标检测算法提供了改进思路<a id="more"></a>
 <h2 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h2></li>
 </ul>
-<h2 id="FPN"><a href="#FPN" class="headerlink" title="FPN"></a>FPN</h2><h2 id="R-FCN"><a href="#R-FCN" class="headerlink" title="R-FCN"></a>R-FCN</h2><h2 id="RetinaNet"><a href="#RetinaNet" class="headerlink" title="RetinaNet"></a>RetinaNet</h2><ul>
+<h2 id="FPN"><a href="#FPN" class="headerlink" title="FPN"></a>FPN</h2><h2 id="R-FCN-Object-Detection-via-Region-based-Fully-Convolutional-Networks"><a href="#R-FCN-Object-Detection-via-Region-based-Fully-Convolutional-Networks" class="headerlink" title="R-FCN: Object Detection via Region-based Fully Convolutional Networks"></a>R-FCN: Object Detection via Region-based Fully Convolutional Networks</h2><ul>
+<li>概述<br>R-FCN 提出了position-sensitive score maps去解决平移不变性，而且可以轻易为R-FCN替换各种全卷积特征抽取网络(如ResNet等)，相比较Faster R-CNN系列，能够共享更多的运算，提升速度。</li>
+</ul>
+<p><img src="/images/15662936061674.jpg" alt="-w727"></p>
+<h2 id="RetinaNet"><a href="#RetinaNet" class="headerlink" title="RetinaNet"></a>RetinaNet</h2><ul>
 <li>主要贡献在于提出 Focal Loss，解决了类别不均衡问题(主要包括平衡easy sample 和 hard sample，以及True sample 和 False sample的权重)提高精度，解决了One-stage detector 精度不如 Two-stage detector的问题.</li>
 </ul>
 <h2 id="SPPNet"><a href="#SPPNet" class="headerlink" title="SPPNet"></a>SPPNet</h2><ul>
@@ -333,9 +337,9 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2019/08/20/R-FCN/">
+      <a class="prev" href="/2019/08/26/ssd/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">R-FCN 更快的检测</span>
+        <span class="prev-text nav-default">Single Shot Detector</span>
         <span class="prev-text nav-mobile">Prev</span>
       </a>
     

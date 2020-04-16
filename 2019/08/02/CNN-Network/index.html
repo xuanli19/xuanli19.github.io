@@ -280,6 +280,7 @@
       
         <p>实现代码地址：<a href="https://github.com/994047477" target="_blank" rel="noopener">Github</a></p>
 <a id="more"></a>
+
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
 <li>AlexNet </li>
 <li>VGG</li>
@@ -312,14 +313,22 @@
 <li><img src="/images/15652496389998.jpg" alt="-w260"></li>
 </ul>
 <h2 id="DenseNet"><a href="#DenseNet" class="headerlink" title="DenseNet"></a>DenseNet</h2><ul>
-<li>设计思路与ResNet非常相似，但实际上一个很大的区别是，它是做多channel的特征的拼接，而ResNet是做求和计算</li>
-<li>DenseNet主要包含两个模块，DenseBlock和Transition层，每个DenseBlock的内部是将第N层之前的feature map都经过卷积处理到固定shape拼接到第N层，Transition作为缓冲层是将维度进行降低，减少计算量</li>
-<li>优点：梯度消失问题得到改善，特征复用，使用了multi-scale的特征,参数少，因为特征图的channel不像之前的那么多</li>
-<li><img src="/images/15652495846430.jpg" alt="-w652"></li>
+<li><p>设计思路与ResNet非常相似，但实际上一个很大的区别是，它是做多channel的特征的拼接，而ResNet是做求和计算</p>
+</li>
+<li><p>DenseNet主要包含两个模块，DenseBlock和Transition层，每个DenseBlock的内部是将第N层之前的feature map都经过卷积处理到固定shape拼接到第N层，Transition作为缓冲层是将维度进行降低，减少计算量</p>
+</li>
+<li><p>优点：梯度消失问题得到改善，特征复用，使用了multi-scale的特征,参数少，因为特征图的channel不像之前的那么多</p>
+</li>
+<li><p>缺点: 耗费显存(concat拼接操作)</p>
+</li>
+<li><p><img src="/images/15652495846430.jpg" alt="-w652"></p>
+</li>
 </ul>
 <h2 id="MobileNet"><a href="#MobileNet" class="headerlink" title="MobileNet"></a>MobileNet</h2><ul>
-<li>解决深度学习网络移动设备上的运行速度问题，提出的高效的网络，在模型大小显著减少的情况下，对准确率不造成太大影响</li>
-<li>使用 depthwise separable convolution 代替传统卷积网络。</li>
+<li><p>解决深度学习网络移动设备上的运行速度问题，提出的高效的网络，在模型大小显著减少的情况下，对准确率不造成太大影响</p>
+</li>
+<li><p>使用 depthwise separable convolution 代替传统卷积网络。</p>
+</li>
 <li><p>depthwise separable convolution </p>
 <ul>
 <li>depthwise卷积<ul>
