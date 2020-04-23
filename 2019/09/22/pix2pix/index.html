@@ -279,7 +279,9 @@
     <div class="post-content">
       
         <p>论文:《Image-to-Image Translation with Conditional Adversarial Networks》  </p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>pix2pix网络基于conditional gan改进，CGAN的生成器网络是输入噪声和条件y，而pix2pix生成器网络是只有一个输入Image，然后经过生成网络(类似U-net等网络)，生成一张image.<br><a id="more"></a><br><img src="/images/15691355356812.jpg" alt="-w707"><br>举个栗子，正因为网络结构的差异，这些网络可以完成不同的任务，比如普通的GAN，只给一堆二次元人物头像，然后让gan学习到从输入噪声生成出和原二次元头像训练图片风格很相似但是内容不一样的图片.对于CGAN，可以给输入条件label和对应的真实数据进行训练，比如使用Mnist数据集，将one-hot标签[0,1,0,0…]和数字1的图像一起送给生成器训练，其他的对应送给CGAN训练。不断迭代学习，最后能够给一个噪声和标签[0,0,1,0,0…]就能生成一个数字2的图像。pix2pix网络，主要是对图像做翻译，给定一对图片[a1,a2,a3…][b1,b2,b3…]送入pix2pix网络学习，生成器输入a1，生成出一个image，然后使用鉴别器和对应标签b1一起打分，经过不断地训练,最后就能完成图像翻译的工作，如下图效果所示。<br><img src="/images/15691365458248.jpg" alt="-w589"></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>pix2pix网络基于conditional gan改进，CGAN的生成器网络是输入噪声和条件y，而pix2pix生成器网络是只有一个输入Image，然后经过生成网络(类似U-net等网络)，生成一张image.</p>
+<a id="more"></a>
+<p><img src="/images/15691355356812.jpg" alt="-w707"><br>举个栗子，正因为网络结构的差异，这些网络可以完成不同的任务，比如普通的GAN，只给一堆二次元人物头像，然后让gan学习到从输入噪声生成出和原二次元头像训练图片风格很相似但是内容不一样的图片.对于CGAN，可以给输入条件label和对应的真实数据进行训练，比如使用Mnist数据集，将one-hot标签[0,1,0,0…]和数字1的图像一起送给生成器训练，其他的对应送给CGAN训练。不断迭代学习，最后能够给一个噪声和标签[0,0,1,0,0…]就能生成一个数字2的图像。pix2pix网络，主要是对图像做翻译，给定一对图片[a1,a2,a3…][b1,b2,b3…]送入pix2pix网络学习，生成器输入a1，生成出一个image，然后使用鉴别器和对应标签b1一起打分，经过不断地训练,最后就能完成图像翻译的工作，如下图效果所示。<br><img src="/images/15691365458248.jpg" alt="-w589"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>[1] <a href="https://blog.csdn.net/weixin_38148834/article/details/95998627" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38148834/article/details/95998627</a></p>
 
       

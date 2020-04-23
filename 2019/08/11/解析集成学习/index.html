@@ -278,7 +278,8 @@
 
     <div class="post-content">
       
-        <h2 id="集成学习（Ensemble-Learning）"><a href="#集成学习（Ensemble-Learning）" class="headerlink" title="集成学习（Ensemble Learning）"></a>集成学习（Ensemble Learning）</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>集成学习的思想就是组合多个弱学习器，得到一个强学习器。但注意，弱学习器不能太弱，比如在分类中，弱学习器的准确率最少要达到50%.<br><a id="more"></a></p>
+        <h2 id="集成学习（Ensemble-Learning）"><a href="#集成学习（Ensemble-Learning）" class="headerlink" title="集成学习（Ensemble Learning）"></a>集成学习（Ensemble Learning）</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>集成学习的思想就是组合多个弱学习器，得到一个强学习器。但注意，弱学习器不能太弱，比如在分类中，弱学习器的准确率最少要达到50%.</p>
+<a id="more"></a>
 <h3 id="“好而不同”"><a href="#“好而不同”" class="headerlink" title="“好而不同”"></a>“好而不同”</h3><p>集成学习强调”好而不同”，这里的”好”是指学习器效果还不错，只要不太差就行；这里的”不同”指的是这些要集成的学习器各自在不同的方面还不错，集合在一起就能互相弥补，正所谓“三个臭皮匠赛过诸葛亮”.  </p>
 <p>针对每个学习器的个体，在选择弱学习器的时候，倾向于选择神经网络(Neural Network)，决策树(Decision Tree)这种类型(给定数据训练出来的学习器有一定随机性)，而不是选择SVM,朴素贝叶斯这种(对给定数据训练出来的学习器相差不大的学习器)。举个栗子，因为如果选择SVM可能学出的多个学习器是相似的，集成在一起就取不到更好的效果。但是如果选择决策树，训练出来的多个学习器很可能分支决策很不相同。所以多个”各有所长”的弱学习器就有机会集成为一个强学习器。<br>另一方面，集成学习主要分为两种策略，Bagging和Boosting，在Bagging中首先是进行对给定数据进行N次Bootstrap抽样（又放回的抽样），然后训练N个弱学习器，这也体现了”不同”.在Boosting中，得到的多个学习器是在不同权重的数据样本下训练得到的，所以也是各有”不同”。</p>
 
